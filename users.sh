@@ -1,11 +1,11 @@
 #!/bin/bash -e
 
-echo -n "Sudoer login (default: 'test'):"
+echo -n "Sudoer login (default: 'test'): "
 read $SUDOER_LOGIN
-echo -n "Sudoer password (default: 'test'):"
+echo -n "Sudoer password (default: 'test'): "
 read -s $SUDOER_PASSWORD
 echo
-echo -n "WWW password (default: 'www'):"
+echo -n "WWW password (default: 'www'): "
 read -s $WWW_PASSWORD
 echo
 
@@ -34,3 +34,7 @@ if ! sudo grep -Fxq "$SUDOER_RECORD" /etc/sudoers
 then
   echo -e "\n$SUDOER_RECORD\n" | sudo tee --append /etc/sudoers
 fi
+
+echo "Create user 'www'..."
+sudo userdel -rf www &> /dev/null || true
+sudo useradd -m www -s /bin/bash -p $(openssl passwd -1 $WWW_PASSWORD)
