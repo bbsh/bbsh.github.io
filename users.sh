@@ -2,10 +2,10 @@
 
 echo -n "Sudoer login (default: 'test'):"
 read $SUDOER_LOGIN
-echo -n "Sudoer password (default: 'test')"
+echo -n "Sudoer password (default: 'test'):"
 read -s $SUDOER_PASSWORD
 echo
-echo -n "WWW password (default: 'www')"
+echo -n "WWW password (default: 'www'):"
 read -s $WWW_PASSWORD
 echo
 

@@ -4,8 +4,8 @@ SCRIPTS="users.sh software.sh"
 
 for SCRIPT in $SCRIPTS
 do
-  wget "https://bbsh.github.io/$SCRIPT"
+  curl -sSfL "https://bbsh.github.io/$SCRIPT" -o "$SCRIPT"
   chmod +x $SCRIPT
-  ./$SCRIPT
+  ./$SCRIPT < /dev/tty
   rm $SCRIPT
 done
